@@ -8,7 +8,7 @@ $folder_path = "C:\Users\akavr\Desktop\sqlScripts"
 $sql_files = Get-ChildItem -Path $folder_path -Filter *.sql -Recurse | % { $_.FullName }
 
 # Get a list of databases names.
-$databasesTable = Invoke-Sqlcmd -ServerInstance "localhost" -Query "SELECT name from sys.databases"  -As DataTables
+$databasesTable = Invoke-Sqlcmd -ServerInstance @server_name -Query "SELECT name from sys.databases"  -As DataTables
 $databases = $databasesTable[0].name
 
 # Loop through each database and execute all SQL scripts.
